@@ -6,6 +6,7 @@ import { getFullnodeUrl, SuiClient } from '@mysten/sui.js/client';
 import { useCurrentAccount } from "@mysten/dapp-kit";
 import {balance} from './utils/balance';
 import React, { useEffect, useState } from 'react';
+import Faucet from '@/components/faucet';
 export default function Homepage()  {
   const currentAccount = useCurrentAccount();
   const suiClient = new SuiClient({ url: getFullnodeUrl('devnet') });
@@ -58,8 +59,14 @@ export default function Homepage()  {
           <div className="w-full flex gap-4">
           {currentAccount ? (
             <div>
-              <h1 className="m-5 p-3" color="blue">Connected Wallet: <span className="bg-blue-100 text-blue-800 me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{currentAccount?.address}</span></h1>
+              <h1 className="m-5" color="blue">Connected Wallet: <span className="bg-blue-100 text-blue-800 me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{currentAccount?.address}</span></h1>
+              <div className="m-5">
               <h1 color="blue">Balance: <span className="bg-blue-100 text-blue-800 me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{suiBalance} Sui</span></h1>
+              </div>
+             
+             <Faucet/>
+           
+             
           </div>
 
           ) :  
