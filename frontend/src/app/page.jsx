@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+// import { getFullnodeUrl, SuiClient } from '@mysten/sui.js/client';
 import { useCurrentAccount } from "@mysten/dapp-kit";
 
 const Homepage = () => {
   const currentAccount = useCurrentAccount();
-
+  // const suiClient = new SuiClient({ url: getFullnodeUrl('devnet') });
+ 
   return (
     <motion.div
       className="h-full"
@@ -32,12 +34,12 @@ const Homepage = () => {
           {/* BUTTONS */}
           <div className="w-full flex gap-4">
           {currentAccount ? (
-              <h1 color="blue">Connected Wallet: <span class="bg-blue-100 text-blue-800 me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{currentAccount?.address}</span></h1>
+              <h1 color="blue">Connected Wallet: <span className="bg-blue-100 text-blue-800 me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{currentAccount?.address}</span></h1>
 
           ) :  
           (
             <h1>
-              <span class="bg-red-100 text-red-800 me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Please Connect your wallet</span>
+              <span className="bg-red-100 text-red-800 me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Please Connect your wallet</span>
               </h1>
           )}
           </div>
