@@ -2,13 +2,36 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-// import { getFullnodeUrl, SuiClient } from '@mysten/sui.js/client';
+import { getFullnodeUrl, SuiClient } from '@mysten/sui.js/client';
 import { useCurrentAccount } from "@mysten/dapp-kit";
-
-const Homepage = () => {
+import {balance} from './utils/balance';
+import React, { useEffect, useState } from 'react';
+export default function Homepage()  {
   const currentAccount = useCurrentAccount();
-  // const suiClient = new SuiClient({ url: getFullnodeUrl('devnet') });
- 
+  const suiClient = new SuiClient({ url: getFullnodeUrl('devnet') });
+  const [suiBalance, setSuiBalance] = useState(0);
+
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        if (!currentAccount) return;
+        const balanceInMIST = await suiClient.getBalance({
+          owner: currentAccount.address,
+         });
+        console.log({balanceInMIST});
+        const res =  balance(balanceInMIST);
+        console.log({res});
+      
+        setSuiBalance(res);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchData();
+  }, [currentAccount]);
+
   return (
     <motion.div
       className="h-full"
@@ -34,13 +57,20 @@ const Homepage = () => {
           {/* BUTTONS */}
           <div className="w-full flex gap-4">
           {currentAccount ? (
-              <h1 color="blue">Connected Wallet: <span className="bg-blue-100 text-blue-800 me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{currentAccount?.address}</span></h1>
+            <div>
+              <h1 className="m-5 p-3" color="blue">Connected Wallet: <span className="bg-blue-100 text-blue-800 me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{currentAccount?.address}</span></h1>
+              <h1 color="blue">Balance: <span className="bg-blue-100 text-blue-800 me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{suiBalance} Sui</span></h1>
+          </div>
 
           ) :  
           (
-            <h1>
+            <div>
+              <h1>
               <span className="bg-red-100 text-red-800 me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Please Connect your wallet</span>
               </h1>
+             
+            </div>
+            
           )}
           </div>
         </div>
@@ -49,4 +79,3 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
