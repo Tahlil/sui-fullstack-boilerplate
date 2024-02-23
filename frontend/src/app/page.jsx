@@ -24,7 +24,7 @@ const Homepage = () => {
           </h1>
           {/* DESC */}
           <p className="md:text-xl">
-          The <span className="text-sky-500">SUI</span> move boilerplate coded using  Next.js, Tailwind CSS, and SUI TypeScript SDK serves as a robust foundation for building full-stack decentralized applications (DApps) on the SUI blockchain. It streamlines the development process, allowing developers to focus on implementing the unique features of their DApp.
+          The <span className="text-sky-500">SUI</span> move boilerplate coded using  Next.js, Tailwind CSS, and SUI Dapp Kit library, serves as a robust foundation for building full-stack decentralized applications (DApps) on the SUI blockchain. It streamlines the development process, allowing developers to focus on implementing the unique features of their DApp.
           </p>
           {/* BUTTONS */}
           <div className="w-full flex gap-4">

@@ -14,6 +14,9 @@ dependencies:
   '@mysten/sui.js':
     specifier: ^0.50.1
     version: 0.50.1
+  '@tanstack/react-query':
+    specifier: ^5.22.2
+    version: 5.22.2(react@18.2.0)
   framer-motion:
     specifier: ^11.0.3
     version: 11.0.5(react-dom@18.2.0)(react@18.2.0)
