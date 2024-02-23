@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import NavLink from "./navLink";
 import { motion } from "framer-motion";
+import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
 
 const links = [
   { url: "/", title: "Home" },
@@ -16,7 +17,6 @@ const links = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
   const topVariants = {
     closed: {
       rotate: 0,
@@ -89,6 +89,7 @@ const Navbar = () => {
           </span>
         </Link>
       </div>
+      <ConnectButton />
    
       {/* RESPONSIVE MENU */}
       <div className="md:hidden">
