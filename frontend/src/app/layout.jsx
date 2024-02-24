@@ -1,6 +1,7 @@
 "use client"
 import { Inter } from "next/font/google";
 import "./globals.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 import TransitionProvider from "@/components/transitionProvider";
 import "@mysten/dapp-kit/dist/index.css";

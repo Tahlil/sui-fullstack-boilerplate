@@ -64,7 +64,7 @@ export default function Homepage()  {
               <h1 color="blue">Balance: <span className="bg-blue-100 text-blue-800 me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{suiBalance} Sui</span></h1>
               </div>
              
-             <Faucet/>
+             <Faucet address={currentAccount.address}/>
            
              
           </div>
