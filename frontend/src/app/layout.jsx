@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import TransitionProvider from "@/components/transitionProvider";
 import "@mysten/dapp-kit/dist/index.css";
 import { getFullnodeUrl } from "@mysten/sui.js/client";
+import { ChakraProvider } from '@chakra-ui/react'
 
 import {
   SuiClientProvider,
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+      <ChakraProvider>
       <QueryClientProvider client={queryClient}>
         <SuiClientProvider networks={networkConfig} defaultNetwork="devnet">
           <WalletProvider autoConnect>
@@ -41,7 +43,8 @@ export default function RootLayout({ children }) {
         </WalletProvider>
         </SuiClientProvider>
       </QueryClientProvider>
-  
+      </ChakraProvider>
+
       </body>
     </html>
   );
