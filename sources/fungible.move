@@ -1,4 +1,4 @@
-module metaschool::erc20 {
+module contracts::suift {
     use std::option;
     use sui::coin;
     use sui::transfer;
