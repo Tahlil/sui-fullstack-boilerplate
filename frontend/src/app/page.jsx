@@ -1,15 +1,14 @@
-"use client";
+"use client"
 
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useCurrentAccount } from "@mysten/dapp-kit";
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Faucet from '@/components/faucet';
 export default function Homepage()  {
   const currentAccount = useCurrentAccount();
   
-
   return (
     <motion.div
       className="h-full"
@@ -59,5 +58,5 @@ export default function Homepage()  {
       </div>
     </motion.div>
   );
-};
+}
 
